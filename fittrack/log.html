@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Log Workout</title>
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    
+    <!-- custom css link -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap" rel="stylesheet">
+</head>
+<body id="top">
+    <!-- HEADER -->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <ion-icon name="fitness-outline" aria-hidden="true"></ion-icon>
+                <span class="span">FitTrack</span>
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+                </button>
+
+                <ul class="navbar-list">
+                    <li><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
+                    <li><a href="exercises.html" class="navbar-link" data-nav-link>Exercises</a></li>
+                    <li><a href="log.html" class="navbar-link active" data-nav-link>Log Workout</a></li>
+                    <li><a href="index.html#about" class="navbar-link" data-nav-link>About</a></li>
+                    <li><a href="index.html#stats" class="navbar-link" data-nav-link>Stats</a></li>
+                </ul>
+            </nav>
+
+            <a href="#" class="btn btn-secondary" id="auth-link">Login</a>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Login Required Section (shown when not logged in) -->
+    <section class="login-required" id="login-required">
+        <div class="container">
+            <div class="auth-container">
+                <h2>Login Required</h2>
+                <p>Please login to access the workout logging feature.</p>
+                
+                <!-- Login/Register Tabs -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="register">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="input-wrapper">
+                        <label for="login-email">Email:</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="login-password">Password:</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Login</span>
+                        <ion-icon name="log-in-outline"></ion-icon>
+                    </button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form">
+                    <div class="input-wrapper">
+                        <label for="register-name">Name:</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="register-email">Email:</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="register-password">Password:</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="register-confirm">Confirm Password:</label>
+                        <input type="password" id="register-confirm" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Register</span>
+                        <ion-icon name="person-add-outline"></ion-icon>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workout Log Section - Simplified and Functional -->
+    <section class="section workout-log-page bg-dark" id="workout-log-page" style="display: none;">
+        <div class="container">
+            <!-- Simple Page Header -->
+            <div class="page-header">
+                <p class="section-subtitle">Track Your Progress</p>
+                <h1 class="h1 page-title">Workout Logger</h1>
+                <p class="section-text page-subtitle">
+                    Log your exercises and track your daily progress.
+                </p>
+            </div>
+
+            <!-- User Welcome Card -->
+            <div class="user-welcome-card">
+                <div class="welcome-content">
+                    <div class="welcome-text">
+                        <h3>Welcome back, <span id="user-name">Tushar</span>!</h3>
+                        <p>Ready to log your workout?</p>
+                    </div>
+                    <button class="btn btn-secondary" id="logout-btn">
+                        <span>Logout</span>
+                        <ion-icon name="log-out-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="workout-main-grid">
+                <!-- Left Column - Workout Form -->
+                <div class="workout-left-column">
+                    <!-- Simple Workout Form -->
+                    <div class="workout-form-section">
+                        <h3 class="section-title">Log Exercise</h3>
+                        <form id="log-form" class="workout-form">
+                            <div class="form-group">
+                                <label for="exercise-input" class="input-label">
+                                    <ion-icon name="fitness-outline" aria-hidden="true"></ion-icon>
+                                    Exercise Name
+                                </label>
+                                <input type="text" id="exercise-input" class="form-input" 
+                                       placeholder="e.g., Barbell Bench Press" required>
+                            </div>
+                            
+                            <div class="metrics-grid">
+                                <div class="form-group">
+                                    <label for="sets-input" class="input-label">
+                                        <ion-icon name="layers-outline" aria-hidden="true"></ion-icon>
+                                        Sets
+                                    </label>
+                                    <input type="number" id="sets-input" class="form-input" 
+                                           placeholder="3" value="1" required min="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reps-input" class="input-label">
+                                        <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                                        Reps
+                                    </label>
+                                    <input type="number" id="reps-input" class="form-input" 
+                                           placeholder="12" required min="1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="weight-input" class="input-label">
+                                        <ion-icon name="barbell-outline" aria-hidden="true"></ion-icon>
+                                        Weight (kg)
+                                    </label>
+                                    <input type="number" id="weight-input" class="form-input" 
+                                           placeholder="50" required min="0" step="0.5">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="notes-input" class="input-label">
+                                    <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
+                                    Notes (optional)
+                                </label>
+                                <textarea id="notes-input" class="form-textarea" 
+                                          placeholder="How did it feel? Any observations?" rows="3"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary workout-submit-btn">
+                                <span>Log Exercise</span>
+                                <ion-icon name="checkmark-circle-outline" aria-hidden="true"></ion-icon>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Right Column - Daily Log -->
+                <div class="workout-right-column">
+                    <!-- Today's Workout Log -->
+                    <div class="daily-log-section">
+                        <div class="daily-log-header">
+                            <h3 class="section-title">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                Today's Workout
+                            </h3>
+                            <div class="current-date" id="current-date">
+                                <!-- Current date will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="daily-exercises" id="daily-exercises">
+                            <div class="empty-log">
+                                <ion-icon name="fitness-outline"></ion-icon>
+                                <p>No exercises logged yet</p>
+                                <span>Start by adding your first exercise!</span>
+                            </div>
+                        </div>
+                        
+                        <div class="daily-summary" id="daily-summary" style="display: none;">
+                            <div class="summary-stats">
+                                <div class="summary-item">
+                                    <span class="summary-label">Total Exercises:</span>
+                                    <span class="summary-value" id="total-exercises">0</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Total Sets:</span>
+                                    <span class="summary-value" id="total-sets">0</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Total Reps:</span>
+                                    <span class="summary-value" id="total-reps">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Days Log -->
+                    <div class="recent-days-section">
+                        <div class="section-header">
+                            <h3 class="section-title">
+                                <ion-icon name="time-outline"></ion-icon>
+                                Recent Days
+                            </h3>
+                            <select id="date-filter" class="date-filter">
+                                <option value="7">Last 7 days</option>
+                                <option value="14">Last 14 days</option>
+                                <option value="30">Last 30 days</option>
+                            </select>
+                        </div>
+                        
+                        <div class="recent-days-list" id="recent-days-list">
+                            <!-- Recent workout days will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top -->
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="chevron-up-outline" aria-hidden="true"></ion-icon>
+    </a>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark-gray">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+                        <span class="span">FitTrack</span>
+                    </a>
+                    <p class="footer-text">
+                        Your ultimate fitness companion for tracking workouts and achieving your goals.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-link-group">
+                        <p class="footer-link-title">Quick Links</p>
+                        <ul class="footer-link-list">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="exercises.html" class="footer-link">Exercises</a></li>
+                            <li><a href="log.html" class="footer-link">Workout Log</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-link-group">
+                        <p class="footer-link-title">Connect</p>
+                        <ul class="footer-link-list">
+                            <li><a href="#" class="footer-link">Support</a></li>
+                            <li><a href="#" class="footer-link">Contact</a></li>
+                            <li><a href="#" class="footer-link">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; 2024 FitTrack. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <script src="js/mock-data-backend.js"></script>
+    <script src="js/log.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

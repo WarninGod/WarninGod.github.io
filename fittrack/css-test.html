@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple CSS Test</title>
+    <style>
+        body {
+            background-color: #ff6b35;
+            color: white;
+            font-family: Arial;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .test-box {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Test Page</h1>
+    <div class="test-box">
+        <h2>If you see this styled, CSS is working!</h2>
+        <p>This page should have an orange background and this box should be white.</p>
+    </div>
+    
+    <h2>Now testing external CSS:</h2>
+    <link rel="stylesheet" href="style.css">
+    <div class="exercise-card" style="max-width: 300px;">
+        <div class="exercise-image">External CSS Test</div>
+        <div class="exercise-info">
+            <h3 class="exercise-name">Test Exercise</h3>
+            <button class="add-to-workout-btn">Test Button</button>
+        </div>
+    </div>
+</body>
+</html>
