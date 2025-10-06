@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExerciseDB API Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .api-status {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .controls {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .controls button {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .controls button:hover {
+            background: #e55a2b;
+        }
+
+        .controls input {
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            background: #333;
+            color: white;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .exercise-card {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #333;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+        }
+
+        .exercise-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exercise-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .placeholder {
+            color: #888;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .placeholder-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .exercise-name {
+            color: #ff6b35;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        .exercise-details {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .exercise-details p {
+            margin-bottom: 5px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+
+        .error {
+            background: #ff4444;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background: #44ff44;
+            color: black;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .gif-test {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .gif-test h3 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        .gif-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .gif-item {
+            background: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .gif-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏋️ ExerciseDB Local Test</h1>
+            <p>Testing local exercise database from: <strong>exercisedb-api-1-open-source</strong></p>
+            <p style="font-size: 12px; color: #888; margin-top: 10px;">
+                📋 <strong>Data Source:</strong> Loading exercises directly from local JSON file
+                <br>🎯 <strong>Testing:</strong> Exercise data structure, GIF URLs, and search functionality
+            </p>
+        </div>
+
+        <div class="api-status" id="api-status">
+            <strong>Status:</strong> <span id="status-text">Initializing...</span>
+        </div>
+
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total-exercises">0</div>
+                <div class="stat-label">Total Exercises</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="loaded-gifs">0</div>
+                <div class="stat-label">GIFs Loaded</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="failed-gifs">0</div>
+                <div class="stat-label">GIFs Failed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="response-time">0ms</div>
+                <div class="stat-label">Response Time</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="testAPI()">🔄 Test Database Loading</button>
+            <button onclick="loadSampleExercises()">📋 Load Sample Exercises</button>
+            <button onclick="testRandomGifs()">🎲 Test Random GIFs</button>
+            <button onclick="testSpecificExercise()">🎯 Test Specific Exercise</button>
+            <button onclick="testSingleGif()">🖼️ Test Single GIF</button>
+            <input type="text" id="search-input" placeholder="Search exercises..." />
+            <button onclick="searchExercises()">🔍 Search</button>
+            <button onclick="clearResults()">🗑️ Clear</button>
+        </div>
+
+        <div class="gif-test" id="gif-test" style="display: none;">
+            <h3>🎬 GIF Loading Test</h3>
+            <div class="gif-grid" id="gif-grid"></div>
+        </div>
+
+        <div id="results">
+            <div class="loading">Click "Test API Connection" to start testing...</div>
+        </div>
+    </div>
+
+    <script src="test-api.js"></script>
+</body>
+</html>

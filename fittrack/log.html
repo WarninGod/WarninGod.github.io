@@ -6,23 +6,516 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitTrack - Log Workout</title>
     
-    <!-- favicon -->
+    
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
     
-    <!-- custom css link -->
+    
     <link rel="stylesheet" href="./assets/css/style.css">
     
-    <!-- google font link -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern Login Page Styles */
+        .auth-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 120px;
+            padding-bottom: 60px;
+        }
+        
+        .auth-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./assets/images/hero-bg.png') center/cover;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        
+        .auth-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(44, 44, 44, 0.6) 100%);
+            z-index: 1;
+        }
+        
+        .auth-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            align-items: flex-start;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .auth-content {
+            color: var(--white);
+        }
+        
+        .auth-content h1 {
+            font-size: 3.5rem;
+            font-weight: var(--fw-800);
+            margin-bottom: 1rem;
+            color: var(--white);
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .auth-content .highlight {
+            color: var(--coquelicot);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .auth-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .auth-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .auth-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .auth-features ion-icon {
+            color: var(--coquelicot);
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        .auth-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            min-height: 500px;
+            width: 100%;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            gap: 0.5rem;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 1.25rem 1.5rem;
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: var(--fw-600);
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-height: 50px;
+        }
+        
+        .auth-tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .auth-tab.active {
+            background: var(--coquelicot);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(255, 101, 54, 0.4);
+            font-weight: var(--fw-700);
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-label {
+            display: block;
+            color: var(--white);
+            font-weight: var(--fw-500);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1.125rem 1.25rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-height: 50px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--coquelicot);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(255, 101, 54, 0.15);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .auth-submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--coquelicot) 0%, #ff4757 100%);
+            border: none;
+            border-radius: 12px;
+            color: var(--white);
+            font-weight: var(--fw-600);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            min-height: 55px;
+        }
+        
+        .auth-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 101, 54, 0.4);
+        }
+        
+        .auth-submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .auth-hero {
+                padding-top: 100px;
+                padding-bottom: 40px;
+            }
+            
+            .auth-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 1rem;
+                margin-top: 1rem;
+                max-width: 500px;
+            }
+            
+            .auth-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .auth-card {
+                padding: 2.5rem 2rem;
+                min-height: 450px;
+            }
+            
+            .workout-dashboard {
+                padding-top: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-hero {
+                padding-top: 80px;
+            }
+            
+            .auth-content h1 {
+                font-size: 2rem;
+            }
+            
+            .auth-content p {
+                font-size: 1rem;
+            }
+            
+            .auth-card {
+                padding: 2rem 1.5rem;
+                min-height: 400px;
+            }
+            
+            .auth-container {
+                max-width: 400px;
+            }
+        }
+        
+        /* Success Message */
+        .success-message {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            color: #2ecc71;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            display: none;
+        }
+        
+        /* Workout Dashboard Styles */
+        .workout-dashboard {
+            display: none;
+            min-height: 100vh;
+            background: var(--rich-black-fogra-29);
+            padding-top: 140px;
+            padding-bottom: 60px;
+        }
+        
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .user-greeting {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+        
+        .logout-btn {
+            margin-top: 1rem;
+        }
+        
+        /* Workout Form Styles */
+        .workout-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .workout-form-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .workout-log-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        
+        .workout-log-section h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .workout-entries {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .workout-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .workout-info h4 {
+            color: var(--white);
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+        
+        .workout-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .delete-workout {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .delete-workout:hover {
+            background: rgba(231, 76, 60, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        .no-workouts {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+            padding: 2rem;
+        }
+        
+        .feature-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--coquelicot);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--coquelicot);
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .feature-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .feature-highlights {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .feature-item {
+                padding: 1rem;
+            }
+            
+            .feature-icon {
+                font-size: 1.8rem;
+            }
+            
+            .feature-title {
+                font-size: 1.1rem;
+            }
+            
+            .feature-desc {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .workout-entry {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body id="top">
-    <!-- HEADER -->
+    
     <header class="header" data-header>
         <div class="container">
             <a href="index.html" class="logo">
-                <ion-icon name="fitness-outline" aria-hidden="true"></ion-icon>
+                <ion-icon name="barbell" aria-hidden="true" class="dumbbell-icon"></ion-icon>
                 <span class="span">FitTrack</span>
             </a>
 
@@ -35,8 +528,6 @@
                     <li><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
                     <li><a href="exercises.html" class="navbar-link" data-nav-link>Exercises</a></li>
                     <li><a href="log.html" class="navbar-link active" data-nav-link>Log Workout</a></li>
-                    <li><a href="index.html#about" class="navbar-link" data-nav-link>About</a></li>
-                    <li><a href="index.html#stats" class="navbar-link" data-nav-link>Stats</a></li>
                 </ul>
             </nav>
 
@@ -50,53 +541,208 @@
         </div>
     </header>
 
-    <!-- Login Required Section (shown when not logged in) -->
-    <section class="login-required" id="login-required">
+    
+    <section class="auth-hero" id="auth-section">
         <div class="container">
             <div class="auth-container">
-                <h2>Login Required</h2>
-                <p>Please login to access the workout logging feature.</p>
                 
-                <!-- Login/Register Tabs -->
-                <div class="auth-tabs">
-                    <button class="auth-tab active" data-tab="login">Login</button>
-                    <button class="auth-tab" data-tab="register">Register</button>
+                <div class="auth-content">
+                    <h1>Start Your <span class="highlight">Fitness</span> Journey</h1>
+                    <p>Join FitTrack today and take control of your workout routine with our comprehensive tracking system.</p>
+                    
+                    <ul class="auth-features">
+                        <li>
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            Track 1500+ exercises
+                        </li>
+                        <li>
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            Monitor your progress
+                        </li>
+                        <li>
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            Achieve your goals
+                        </li>
+                        <li>
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                            Stay motivated
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Login Form -->
-                <form id="login-form" class="auth-form active">
-                    <div class="input-wrapper">
-                        <label for="login-email">Email:</label>
-                        <input type="email" id="login-email" required>
+                
+                <div class="auth-card">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" onclick="switchTab('login')">Login</button>
+                        <button class="auth-tab" onclick="switchTab('register')">Sign Up</button>
                     </div>
-                    <div class="input-wrapper">
-                        <label for="login-password">Password:</label>
-                        <input type="password" id="login-password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <span>Login</span>
-                        <ion-icon name="log-in-outline"></ion-icon>
-                    </button>
-                </form>
 
-                <!-- Register Form -->
-                <form id="register-form" class="auth-form">
-                    <div class="input-wrapper">
-                        <label for="register-name">Name:</label>
-                        <input type="text" id="register-name" required>
+                    <div class="success-message" id="success-message"></div>
+                    <div class="error-message" id="error-message"></div>
+
+                    
+                    <form id="login-form" class="auth-form active">
+                        <div class="form-group">
+                            <label for="login-email" class="form-label">Email Address</label>
+                            <input type="email" id="login-email" class="form-input" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="auth-submit-btn">
+                            <span>Sign In</span>
+                            <ion-icon name="log-in-outline"></ion-icon>
+                        </button>
+                    </form>
+
+                    
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="register-name" class="form-label">Full Name</label>
+                            <input type="text" id="register-name" class="form-input" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email" class="form-label">Email Address</label>
+                            <input type="email" id="register-email" class="form-input" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password" class="form-label">Password</label>
+                            <input type="password" id="register-password" class="form-input" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm" class="form-label">Confirm Password</label>
+                            <input type="password" id="register-confirm" class="form-input" placeholder="Confirm your password" required>
+                        </div>
+                        <button type="submit" class="auth-submit-btn">
+                            <span>Create Account</span>
+                            <ion-icon name="person-add-outline"></ion-icon>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="workout-dashboard" id="workout-dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Welcome back, <span id="user-name">Fitness Enthusiast</span>!</h1>
+                <p class="user-greeting">Ready to crush your workout today?</p>
+                <button class="btn btn-secondary logout-btn" id="logout-btn">
+                    <span>Logout</span>
+                    <ion-icon name="log-out-outline"></ion-icon>
+                </button>
+            </div>
+
+            
+            <div class="section">
+                <div class="workout-content">
+                    <p class="section-subtitle">Track Your Progress</p>
+                    <h2 class="h2 section-title">Log Your <strong class="strong">Workout</strong></h2>
+                    
+                    <div class="workout-form-card">
+                        <form id="workout-form" class="workout-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="exercise-select" class="form-label">Exercise</label>
+                                    <input type="text" id="exercise-select" class="form-input" placeholder="e.g., Bench Press" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="sets" class="form-label">Sets</label>
+                                    <input type="number" id="sets" class="form-input" min="1" value="3" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reps" class="form-label">Reps</label>
+                                    <input type="number" id="reps" class="form-input" min="1" placeholder="12" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="weight" class="form-label">Weight (kg)</label>
+                                    <input type="number" id="weight" class="form-input" min="0" step="0.5" placeholder="50" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <span>Log Exercise</span>
+                                <ion-icon name="add-circle-outline"></ion-icon>
+                            </button>
+                        </form>
                     </div>
-                    <div class="input-wrapper">
-                        <label for="register-email">Email:</label>
-                        <input type="email" id="register-email" required>
+
+                    
+                    <div class="workout-log-section">
+                        <h3>Today's Workout</h3>
+                        <div id="todays-workout" class="workout-entries">
+                            <p class="no-workouts">No exercises logged yet. Start your workout!</p>
+                        </div>
                     </div>
-                    <div class="input-wrapper">
-                        <label for="register-password">Password:</label>
-                        <input type="password" id="register-password" required>
-                    </div>
-                    <div class="input-wrapper">
-                        <label for="register-confirm">Confirm Password:</label>
-                        <input type="password" id="register-confirm" required>
-                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer class="footer">
+        <div class="section footer-top bg-dark">
+            <div class="container">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <ion-icon name="fitness-outline" aria-hidden="true"></ion-icon>
+                        <span class="span">FitTrack</span>
+                    </a>
+                    <p class="footer-brand-text">
+                        Smart workout tracking system for college project demonstration.
+                    </p>
+                </div>
+
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title has-before">Quick Links</p>
+                    </li>
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="exercises.html" class="footer-link">Exercises</a></li>
+                    <li><a href="log.html" class="footer-link">Log Workout</a></li>
+                </ul>
+
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title has-before">Project Info</p>
+                    </li>
+                    <li class="footer-list-item">
+                        <ion-icon name="school" aria-hidden="true"></ion-icon>
+                        <span class="footer-link">College Web Development Project</span>
+                    </li>
+                    <li class="footer-list-item">
+                        <ion-icon name="calendar" aria-hidden="true"></ion-icon>
+                        <span class="footer-link">Academic Year 2025</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">
+                    &copy; 2025 FitTrack - College Project. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+    </a>
+
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <script src="js/mock-data.js"></script>
+    <script src="js/log.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
                     <button type="submit" class="btn btn-primary">
                         <span>Register</span>
                         <ion-icon name="person-add-outline"></ion-icon>
@@ -106,10 +752,10 @@
         </div>
     </section>
 
-    <!-- Workout Log Section - Simplified and Functional -->
+    
     <section class="section workout-log-page bg-dark" id="workout-log-page" style="display: none;">
         <div class="container">
-            <!-- Simple Page Header -->
+            
             <div class="page-header">
                 <p class="section-subtitle">Track Your Progress</p>
                 <h1 class="h1 page-title">Workout Logger</h1>
@@ -118,7 +764,7 @@
                 </p>
             </div>
 
-            <!-- User Welcome Card -->
+            
             <div class="user-welcome-card">
                 <div class="welcome-content">
                     <div class="welcome-text">
@@ -132,11 +778,11 @@
                 </div>
             </div>
 
-            <!-- Main Content Grid -->
+            
             <div class="workout-main-grid">
-                <!-- Left Column - Workout Form -->
+                
                 <div class="workout-left-column">
-                    <!-- Simple Workout Form -->
+                    
                     <div class="workout-form-section">
                         <h3 class="section-title">Log Exercise</h3>
                         <form id="log-form" class="workout-form">
@@ -195,9 +841,9 @@
                     </div>
                 </div>
 
-                <!-- Right Column - Daily Log -->
+                
                 <div class="workout-right-column">
-                    <!-- Today's Workout Log -->
+                    
                     <div class="daily-log-section">
                         <div class="daily-log-header">
                             <h3 class="section-title">
@@ -205,7 +851,7 @@
                                 Today's Workout
                             </h3>
                             <div class="current-date" id="current-date">
-                                <!-- Current date will be populated by JavaScript -->
+                                
                             </div>
                         </div>
                         
@@ -235,7 +881,7 @@
                         </div>
                     </div>
 
-                    <!-- Recent Days Log -->
+                    
                     <div class="recent-days-section">
                         <div class="section-header">
                             <h3 class="section-title">
@@ -250,7 +896,7 @@
                         </div>
                         
                         <div class="recent-days-list" id="recent-days-list">
-                            <!-- Recent workout days will be populated here -->
+                            
                         </div>
                     </div>
                 </div>
@@ -258,18 +904,18 @@
         </div>
     </section>
 
-    <!-- Back to Top -->
+    
     <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
         <ion-icon name="chevron-up-outline" aria-hidden="true"></ion-icon>
     </a>
 
-    <!-- Footer -->
+    
     <footer class="footer bg-dark-gray">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="index.html" class="footer-logo">
-                        <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+                        <ion-icon name="barbell" aria-hidden="true" class="dumbbell-icon"></ion-icon>
                         <span class="span">FitTrack</span>
                     </a>
                     <p class="footer-text">
@@ -306,13 +952,12 @@
         </div>
     </footer>
 
-    <!-- Ionicons -->
+    
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
-    <script src="js/mock-data-backend.js"></script>
+    <script src="js/mock-data.js"></script>
     <script src="js/log.js"></script>
-    <script src="js/auth.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

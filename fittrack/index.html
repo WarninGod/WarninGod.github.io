@@ -4,32 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitTrack - Smart Workout Tracking System</title>
+    <title>Fitlife - Work Hard To Get Better Life</title>
     
-    <!-- favicon -->
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
-    
-    <!-- custom css link -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    
-    <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap" rel="stylesheet">
-    
-    <!-- preload images -->
-    <link rel="preload" as="image" href="./assets/images/hero-banner.png">
-    <link rel="preload" as="image" href="./assets/images/hero-circle-one.png">
-    <link rel="preload" as="image" href="./assets/images/hero-circle-two.png">
-    <link rel="preload" as="image" href="./assets/images/heart-rate.svg">
-    <link rel="preload" as="image" href="./assets/images/calories.svg">
 </head>
 <body id="top">
-    <!-- HEADER -->
     <header class="header" data-header>
         <div class="container">
-            <a href="#" class="logo">
-                <ion-icon name="fitness-outline" aria-hidden="true"></ion-icon>
+            <a href="index.html" class="logo">
+                <ion-icon name="barbell" aria-hidden="true" class="dumbbell-icon"></ion-icon>
                 <span class="span">FitTrack</span>
             </a>
 
@@ -39,15 +26,13 @@
                 </button>
 
                 <ul class="navbar-list">
-                    <li><a href="#home" class="navbar-link active" data-nav-link>Home</a></li>
+                    <li><a href="index.html" class="navbar-link active" data-nav-link>Home</a></li>
                     <li><a href="exercises.html" class="navbar-link" data-nav-link>Exercises</a></li>
                     <li><a href="log.html" class="navbar-link" data-nav-link>Log Workout</a></li>
-                    <li><a href="#about" class="navbar-link" data-nav-link>About</a></li>
-                    <li><a href="#stats" class="navbar-link" data-nav-link>Stats</a></li>
                 </ul>
             </nav>
 
-            <a href="log.html" class="btn btn-secondary">Start Tracking</a>
+            <a href="coming-soon.html" class="btn btn-secondary coming-soon">Coming Soon</a>
 
             <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
                 <span class="line"></span>
@@ -59,19 +44,18 @@
 
     <main>
         <article>
-            <!-- HERO -->
-            <section class="section hero bg-dark has-after has-bg-image" id="home" aria-label="hero" data-section
-                style="background-image: url('./assets/images/hero-bg.png')">
+            <section class="section hero bg-dark has-after has-bg-image" id="home" aria-label="hero" 
+                     data-section style="background-image: url('./assets/images/hero-bg.png')">
                 <div class="container">
                     <div class="hero-content">
                         <p class="hero-subtitle">
-                            <strong class="strong">The Best</strong>Fitness Tracking
+                            <strong class="strong">The Best</strong> Fitness Club
                         </p>
 
-                        <h1 class="h1 hero-title">Smart <strong class="strong">Workout Tracking</strong> System</h1>
+                        <h1 class="h1 hero-title">Track, Learn, Achieve.</h1>
 
                         <p class="hero-text">
-                            Track your exercises, monitor progress, and achieve your fitness goals with our comprehensive digital workout tracking solution designed for modern fitness enthusiasts.
+                            Log progress, perfect form with 1500+ animated exercises, and unlock your fitness potential.
                         </p>
 
                         <a href="exercises.html" class="btn btn-primary">Get Started</a>
@@ -81,249 +65,149 @@
                         <img src="./assets/images/hero-banner.png" width="660" height="753" alt="hero banner" class="w-100">
 
                         <img src="./assets/images/hero-circle-one.png" width="666" height="666" aria-hidden="true" alt=""
-                            class="circle circle-1">
+                          class="circle circle-1">
                         <img src="./assets/images/hero-circle-two.png" width="666" height="666" aria-hidden="true" alt=""
-                            class="circle circle-2">
+                          class="circle circle-2">
 
                         <img src="./assets/images/heart-rate.svg" width="255" height="270" alt="heart rate"
-                            class="abs-img abs-img-1">
-                        <img src="./assets/images/calories.svg" width="348" height="224" alt="calories"
-                            class="abs-img abs-img-2">
+                          class="abs-img abs-img-1">
+                        <img src="./assets/images/calories.svg" width="348" height="224" alt="calories" class="abs-img abs-img-2">
                     </div>
                 </div>
             </section>
 
-            <!-- ABOUT -->
-            <section class="section about" id="about" aria-label="about">
+            <section class="section stats" aria-label="stats">
                 <div class="container">
-                    <div class="about-banner has-after">
-                        <img src="./assets/images/about-banner.png" width="660" height="648" loading="lazy" alt="about banner"
-                            class="w-100">
-
-                        <img src="./assets/images/about-circle-one.png" width="660" height="534" loading="lazy" aria-hidden="true"
-                            alt="" class="circle circle-1">
-                        <img src="./assets/images/about-circle-two.png" width="660" height="534" loading="lazy" aria-hidden="true"
-                            alt="" class="circle circle-2">
-
-                        <img src="./assets/images/fitness.png" width="650" height="154" loading="lazy" alt="fitness"
-                            class="abs-img">
-                    </div>
-
-                    <div class="about-content">
-                        <p class="section-subtitle">About FitTrack</p>
-
-                        <h2 class="h2 section-title">Every Workout Counts Towards Your Success</h2>
-
-                        <p class="section-text">
-                            FitTrack is a comprehensive workout tracking system designed to help you monitor your fitness journey. 
-                            Track exercises, log workouts, and analyze your progress with our intuitive digital platform.
-                        </p>
-
-                        <p class="section-text">
-                            Our system provides detailed exercise databases, smart logging capabilities, and progress analytics 
-                            to help you achieve your fitness goals efficiently and effectively.
-                        </p>
-
-                        <div class="wrapper">
-                            <div class="about-coach">
-                                <figure class="coach-avatar">
-                                    <img src="./assets/images/about-coach.jpg" width="65" height="65" loading="lazy" alt="Trainer">
-                                </figure>
-
-                                <div>
-                                    <h3 class="h3 coach-name">FitTrack System</h3>
-                                    <p class="coach-title">Digital Fitness Coach</p>
-                                </div>
-                            </div>
-
-                            <a href="log.html" class="btn btn-primary">Start Tracking</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- VIDEO -->
-            <section class="section video" aria-label="video">
-                <div class="container">
-                    <div class="video-card has-before has-bg-image"
-                        style="background-image: url('./assets/images/video-banner.jpg')">
-                        <h2 class="h2 card-title">Explore Our Workout System</h2>
-
-                        <button class="play-btn" aria-label="play video">
-                            <ion-icon name="play-sharp" aria-hidden="true"></ion-icon>
-                        </button>
-
-                        <a href="exercises.html" class="btn-link has-before">Browse Exercises</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CLASS -->
-            <section class="section class bg-dark has-bg-image" id="class" aria-label="class"
-                style="background-image: url('./assets/images/classes-bg.png')">
-                <div class="container">
-                    <p class="section-subtitle">Our Features</p>
-
-                    <h2 class="h2 section-title text-center">FitTrack System Features</h2>
-
-                    <ul class="class-list has-scrollbar">
-                        <li class="scrollbar-item">
-                            <div class="class-card bg-dark">
-                                <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
-                                    <img src="./assets/images/class-1.jpg" width="416" height="240" loading="lazy" alt="Exercise Database"
-                                        class="img-cover">
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="title-wrapper">
-                                        <img src="./assets/images/class-icon-1.png" width="52" height="52" aria-hidden="true" alt=""
-                                            class="title-icon">
-
-                                        <h3 class="h3 card-title">Exercise Database</h3>
-                                    </div>
-
-                                    <p class="card-text">
-                                        Comprehensive collection of <span id="total-exercises" class="exercise-count-text">1500+</span> exercises organized by muscle groups with detailed instructions.
-                                    </p>
-
-                                    <div class="card-progress">
-                                        <div class="progress-wrapper">
-                                            <p class="progress-label">Exercises Available</p>
-                                            <span class="progress-value" id="exercises-count">1500+</span>
-                                        </div>
-
-                                        <div class="progress-bg">
-                                            <div class="progress-bar" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <ul class="stats-list">
+                        <li>
+                            <div class="stats-card">
+                                <ion-icon name="barbell" aria-hidden="true"></ion-icon>
+                                <data class="card-title" value="1500">1500+</data>
+                                <p class="card-text">Exercises Available</p>
                             </div>
                         </li>
 
-                        <li class="scrollbar-item">
-                            <div class="class-card bg-dark">
-                                <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
-                                    <img src="./assets/images/class-2.jpg" width="416" height="240" loading="lazy" alt="Workout Logging"
-                                        class="img-cover">
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="title-wrapper">
-                                        <img src="./assets/images/class-icon-2.png" width="52" height="52" aria-hidden="true" alt=""
-                                            class="title-icon">
-
-                                        <h3 class="h3 card-title">Workout Logging</h3>
-                                    </div>
-
-                                    <p class="card-text">
-                                        Log your workouts with detailed tracking of sets, reps, weights, and progress over time.
-                                    </p>
-
-                                    <div class="card-progress">
-                                        <div class="progress-wrapper">
-                                            <p class="progress-label">Logged Workouts</p>
-                                            <span class="progress-value" id="workouts-logged">7</span>
-                                        </div>
-
-                                        <div class="progress-bg">
-                                            <div class="progress-bar" style="width: 85%"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <li>
+                            <div class="stats-card">
+                                <ion-icon name="timer" aria-hidden="true"></ion-icon>
+                                <data class="card-title" value="24">24/7</data>
+                                <p class="card-text">Workout Tracking</p>
                             </div>
                         </li>
 
-                        <li class="scrollbar-item">
-                            <div class="class-card bg-dark">
-                                <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
-                                    <img src="./assets/images/class-3.jpg" width="416" height="240" loading="lazy" alt="Progress Analytics"
-                                        class="img-cover">
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="title-wrapper">
-                                        <img src="./assets/images/class-icon-3.png" width="52" height="52" aria-hidden="true" alt=""
-                                            class="title-icon">
-
-                                        <h3 class="h3 card-title">Progress Analytics</h3>
-                                    </div>
-
-                                    <p class="card-text">
-                                        Track your fitness progress with detailed analytics and performance insights over time.
-                                    </p>
-
-                                    <div class="card-progress">
-                                        <div class="progress-wrapper">
-                                            <p class="progress-label">Analytics Available</p>
-                                            <span class="progress-value">100%</span>
-                                        </div>
-
-                                        <div class="progress-bg">
-                                            <div class="progress-bar" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="scrollbar-item">
-                            <div class="class-card bg-dark">
-                                <figure class="card-banner img-holder" style="--width: 416; --height: 240;">
-                                    <img src="./assets/images/class-4.jpg" width="416" height="240" loading="lazy" alt="Mobile Ready"
-                                        class="img-cover">
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="title-wrapper">
-                                        <img src="./assets/images/class-icon-4.png" width="52" height="52" aria-hidden="true" alt=""
-                                            class="title-icon">
-
-                                        <h3 class="h3 card-title">Mobile Ready</h3>
-                                    </div>
-
-                                    <p class="card-text">
-                                        Access your workout tracker anywhere with responsive design that works on all devices.
-                                    </p>
-
-                                    <div class="card-progress">
-                                        <div class="progress-wrapper">
-                                            <p class="progress-label">Device Support</p>
-                                            <span class="progress-value">100%</span>
-                                        </div>
-
-                                        <div class="progress-bg">
-                                            <div class="progress-bar" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <li>
+                            <div class="stats-card">
+                                <ion-icon name="trophy" aria-hidden="true"></ion-icon>
+                                <data class="card-title" value="100">100%</data>
+                                <p class="card-text">Progress Monitoring</p>
                             </div>
                         </li>
                     </ul>
                 </div>
             </section>
+
+            <section class="section about" id="about" aria-label="about">
+                <div class="container">
+                    <div class="about-banner has-after">
+                        <img src="./assets/images/about-banner.png" width="660" height="648" loading="lazy" alt="about banner" class="w-100">
+                    </div>
+
+                    <div class="about-content">
+                        <p class="section-subtitle">About FitTrack</p>
+
+                        <h2 class="h2 section-title">Smart Workout Tracking for Everyone</h2>
+
+                        <p class="section-text">
+                            FitTrack is a comprehensive fitness tracking system designed to help you monitor your workout progress, 
+                            discover new exercises, and achieve your fitness goals efficiently.
+                        </p>
+
+                        <div class="wrapper">
+                            <div class="about-coach">
+                                <figure class="coach-avatar">
+                                    <img src="./assets/images/about-coach.jpg" width="65" height="65" loading="lazy" alt="Coach">
+                                </figure>
+
+                                <div>
+                                    <h3 class="h3 coach-name">College Project</h3>
+                                    <p class="coach-title">Web Development Showcase</p>
+                                </div>
+                            </div>
+
+                            <a href="exercises.html" class="btn btn-primary">
+                                <span class="span">Browse Exercises</span>
+                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section coming-soon bg-dark" id="features" aria-label="features">
+                <div class="container">
+                    <div class="coming-soon-content">
+                        <p class="section-subtitle">Coming Soon</p>
+                        <h2 class="h2 section-title">More Features On The Way</h2>
+                        
+                        <div class="coming-soon-grid">
+                            <div class="feature-card">
+                                <div class="card-icon">
+                                    <ion-icon name="analytics" aria-hidden="true"></ion-icon>
+                                </div>
+                                <h3 class="h3 card-title">Advanced Analytics</h3>
+                                <p class="card-text">Detailed workout statistics and progress charts</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="card-icon">
+                                    <ion-icon name="people" aria-hidden="true"></ion-icon>
+                                </div>
+                                <h3 class="h3 card-title">Social Features</h3>
+                                <p class="card-text">Share workouts and compete with friends</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="card-icon">
+                                    <ion-icon name="phone-portrait" aria-hidden="true"></ion-icon>
+                                </div>
+                                <h3 class="h3 card-title">Mobile App</h3>
+                                <p class="card-text">Native mobile app for iOS and Android</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <div class="card-icon">
+                                    <ion-icon name="nutrition" aria-hidden="true"></ion-icon>
+                                </div>
+                                <h3 class="h3 card-title">Nutrition Tracking</h3>
+                                <p class="card-text">Complete meal planning and calorie tracking</p>
+                            </div>
+                        </div>
+
+                        <a href="coming-soon.html" class="btn btn-secondary">
+                            <span class="span">Learn More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </div>
         </article>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="section footer-top bg-dark">
             <div class="container">
                 <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <ion-icon name="fitness-outline" aria-hidden="true"></ion-icon>
+                    <a href="index.html" class="logo">
+                        <ion-icon name="barbell" aria-hidden="true" class="dumbbell-icon"></ion-icon>
                         <span class="span">FitTrack</span>
                     </a>
-
-                    <p class="footer-brand-text">
-                        Smart workout tracking system for college project demonstration.
-                    </p>
+                    <p class="footer-brand-text">Smart workout tracking system for college project demonstration.</p>
                 </div>
 
                 <ul class="footer-list">
                     <li>
                         <p class="footer-list-title has-before">Quick Links</p>
                     </li>
-                    <li><a href="#home" class="footer-link">Home</a></li>
+                    <li><a href="index.html" class="footer-link">Home</a></li>
                     <li><a href="exercises.html" class="footer-link">Exercises</a></li>
                     <li><a href="log.html" class="footer-link">Log Workout</a></li>
                 </ul>
@@ -353,16 +237,13 @@
         </div>
     </footer>
 
-    <!-- BACK TO TOP -->
     <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
         <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
     </a>
 
-    <!-- Scripts -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="js/mock-data-backend.js"></script>
-    <script src="js/home.js"></script>
     <script src="./assets/js/script.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - FitTrack</title>
+
+    
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap" rel="stylesheet">
+</head>
+
+<body id="top">
+
+    
+    <header class="header" data-header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon-container">
+                    <ion-icon name="heart-outline" aria-hidden="true" class="heart-icon"></ion-icon>
+                    <ion-icon name="pulse-outline" aria-hidden="true" class="pulse-icon"></ion-icon>
+                </div>
+                <span class="span">FitTrack</span>
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                    <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+                </button>
+
+                <ul class="navbar-list">
+                    <li><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
+                    <li><a href="exercises.html" class="navbar-link" data-nav-link>Exercises</a></li>
+                    <li><a href="coming-soon.html" class="navbar-link active" data-nav-link>Coming Soon</a></li>
+                </ul>
+            </nav>
+
+            <a href="index.html" class="btn btn-secondary">Back to Home</a>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            
+            <section class="section coming-soon-hero bg-dark has-bg-image" aria-label="coming soon hero" style="background-image: url('./assets/images/hero-bg.png')">
+                <div class="container">
+                    <div class="coming-soon-hero-content">
+                        <h1 class="h1 hero-title" style="color: var(--white);">Coming Soon</h1>
+                    </div>
+                </div>
+            </section>
+
+            
+            <section class="section patch-notes has-bg-image" id="updates" aria-label="upcoming features" style="background-image: url('./assets/images/hero-bg.png')">
+                <div class="container">
+                    <div class="text-center">
+                        <p class="section-subtitle glow-subtitle">🛠️ Development Roadmap</p>
+                    </div>
+                    <h2 class="h2 section-title text-center">Upcoming Backend Features</h2>
+                    <p class="section-text text-center">FitTrack is evolving! Here's what's coming in future updates to make your fitness journey even better.</p>
+
+                    <div class="patch-notes-grid">
+                        <div class="patch-note-card glow-card">
+                            <div class="patch-icon">
+                                <ion-icon name="person-circle-outline"></ion-icon>
+                            </div>
+                            <h3 class="patch-title">User Accounts & Profiles</h3>
+                            <p class="patch-description">Create personalized accounts with custom fitness profiles, goals, and preferences. Track your journey across devices.</p>
+                            <span class="patch-status coming">v2.0</span>
+                        </div>
+
+                        <div class="patch-note-card glow-card">
+                            <div class="patch-icon">
+                                <ion-icon name="analytics-outline"></ion-icon>
+                            </div>
+                            <h3 class="patch-title">Advanced Progress Tracking</h3>
+                            <p class="patch-description">Comprehensive workout analytics with charts, performance metrics, and progress visualization over time.</p>
+                            <span class="patch-status coming">v2.1</span>
+                        </div>
+
+                        <div class="patch-note-card glow-card">
+                            <div class="patch-icon">
+                                <ion-icon name="flame-outline"></ion-icon>
+                            </div>
+                            <h3 class="patch-title">Calorie & Nutrition Tracking</h3>
+                            <p class="patch-description">Integrated nutrition database with meal logging, calorie counting, and macro tracking to complement your workouts.</p>
+                            <span class="patch-status coming">v2.2</span>
+                        </div>
+
+                        <div class="patch-note-card glow-card">
+                            <div class="patch-icon">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                            </div>
+                            <h3 class="patch-title">Workout Scheduling & Plans</h3>
+                            <p class="patch-description">Custom workout plans, scheduling system, and automated reminders to keep you consistent with your fitness routine.</p>
+                            <span class="patch-status coming">v2.3</span>
+                        </div>
+
+                        <div class="patch-note-card glow-card">
+                            <div class="patch-icon">
+                                <ion-icon name="people-outline"></ion-icon>
+                            </div>
+                            <h3 class="patch-title">Social Features & Challenges</h3>
+                            <p class="patch-description">Connect with friends, share achievements, join fitness challenges, and build a supportive community.</p>
+                            <span class="patch-status coming">v2.4</span>
+                        </div>
+
+                        <div class="patch-note-card glow-card">
+                            <div class="patch-icon">
+                                <ion-icon name="phone-portrait-outline"></ion-icon>
+                            </div>
+                            <h3 class="patch-title">Mobile App & Sync</h3>
+                            <p class="patch-description">Native mobile applications with cloud synchronization for seamless workout tracking on the go.</p>
+                            <span class="patch-status coming">v3.0</span>
+                        </div>
+
+                        <div class="patch-note-card glow-card">
+                            <div class="patch-icon">
+                                <ion-icon name="diamond-outline"></ion-icon>
+                            </div>
+                            <h3 class="patch-title">AI Workout Recommendations</h3>
+                            <p class="patch-description">Intelligent workout suggestions based on your performance, goals, and preferences using machine learning.</p>
+                            <span class="patch-status future">v3.1</span>
+                        </div>
+
+                        <div class="patch-note-card glow-card">
+                            <div class="patch-icon">
+                                <ion-icon name="fitness-outline"></ion-icon>
+                            </div>
+                            <h3 class="patch-title">Wearable Device Integration</h3>
+                            <p class="patch-description">Connect with popular fitness trackers and smartwatches for real-time heart rate and activity monitoring.</p>
+                            <span class="patch-status future">v3.2</span>
+                        </div>
+                    </div>
+
+                    <div class="patch-notes-footer">
+                        <p class="patch-subtitle glow-subtitle">⭐ Stay tuned for these amazing features!</p>
+                        <p class="patch-text">Follow our development progress and be the first to know when new features launch. This college project demonstrates the potential for a comprehensive fitness tracking platform! 🎓</p>
+                        <a href="index.html" class="btn btn-primary glow-btn">🏠 Back to Home</a>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    
+    <footer class="footer">
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">
+                    &copy; 2025 FitTrack. College Project Demo.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+        <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+    </a>
+
+    
+    <script src="./assets/js/script.js" defer></script>
+
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
