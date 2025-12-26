@@ -1,3 +1,28 @@
+// Project data (edit to add your own)
+const PROJECTS = [
+    {
+        title: 'Delhi47 Hardware Store',
+        description: 'A real-world storefront website built for a local hardware business. Designed to showcase product categories clearly and help customers understand offerings without confusion.',
+        tags: ['HTML', 'CSS'],
+        url: 'https://warningod.me/Delhi47/',
+        details: ['Focus on usability', 'Mobile-friendly layout', 'Business-oriented design']
+    },
+    {
+        title: 'Inventory Admin Panel',
+        description: 'An internal admin dashboard to manage products, categories, and stock levels. Built with a focus on clarity, speed, and ease of use for non-technical users.',
+        tags: ['Dashboard', 'Forms'],
+        url: 'https://warningod.me/Delhi47Traders/',
+        details: ['Category management', 'Stock tracking concept', 'Scalable layout for future features']
+    },
+    {
+        title: 'FitTrack Workout Tracker',
+        description: 'Workout tracker website with a simple database layer for logging sessions and viewing history. Built for practical use and clean daily logging.',
+        tags: ['UI', 'JS', 'DB'],
+        url: 'https://warningod.me/FitTrack/',
+        details: ['Workout logging', 'Basic database integration', 'Responsive, mobile-friendly UI']
+    }
+];
+
 // Main JavaScript functionality
 class EsportsPortfolio {
     constructor() {
@@ -15,6 +40,7 @@ class EsportsPortfolio {
         this.setupScrollEffects();
         this.setupFormHandling();
         this.setupAnimations();
+        this.renderProjects();
         this.setupParallax();
     }
     
@@ -129,14 +155,13 @@ class EsportsPortfolio {
         const contactForm = document.getElementById('contact-form');
         
         if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
+            contactForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 
                 const formData = new FormData(contactForm);
-                const data = Object.fromEntries(formData);
                 
-                // Simulate form submission
-                this.submitForm(data);
+                // Submit to Formspree
+                await this.submitForm(contactForm, formData);
             });
         }
         
@@ -153,7 +178,7 @@ class EsportsPortfolio {
         });
     }
     
-    submitForm(data) {
+    async submitForm(form, formData) {
         const submitBtn = document.querySelector('.submit-btn');
         const originalText = submitBtn.innerHTML;
         
@@ -161,14 +186,39 @@ class EsportsPortfolio {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
         
-        // Simulate API call
-        setTimeout(() => {
-            // Show success message
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            submitBtn.style.background = 'linear-gradient(135deg, #4ecdc4, #26c6da)';
+        try {
+            // Submit to Formspree
+            const response = await fetch('https://formspree.io/f/xreggnre', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             
-            // Reset form
-            document.getElementById('contact-form').reset();
+            if (response.ok) {
+                // Show success message
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                submitBtn.style.background = 'linear-gradient(135deg, #4ecdc4, #26c6da)';
+                
+                // Reset form
+                form.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = 'var(--gradient-primary)';
+                    submitBtn.disabled = false;
+                }, 3000);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            // Show error message
+            submitBtn.innerHTML = '<i class="fas fa-times"></i> Error! Try again';
+            submitBtn.style.background = 'linear-gradient(135deg, #ff6b6b, #ff5252)';
+            
+            console.error('Form submission error:', error);
             
             // Reset button after 3 seconds
             setTimeout(() => {
@@ -176,9 +226,7 @@ class EsportsPortfolio {
                 submitBtn.style.background = 'var(--gradient-primary)';
                 submitBtn.disabled = false;
             }, 3000);
-            
-            console.log('Form data:', data);
-        }, 2000);
+        }
     }
     
     // Setup animations
@@ -253,6 +301,33 @@ class EsportsPortfolio {
                 clearInterval(timer);
             }
         }, 100);
+    }
+
+    // Render projects from PROJECTS array
+    renderProjects() {
+        const grid = document.getElementById('projects-grid');
+        if (!grid) return;
+
+        const makeTag = (t) => `<span class="project-tag">${t}</span>`;
+        const cards = PROJECTS.map((p, idx) => {
+            const url = p.url && p.url.trim() ? p.url.trim() : '';
+            const delay = idx * 100;
+            const action = url
+                ? `<a href=\"${url}\" target=\"_blank\" rel=\"noopener\" class=\"project-button primary\" aria-label=\"Open ${p.title}\"><i class=\"fas fa-external-link-alt\" aria-hidden=\"true\"></i><span>Open</span></a>`
+                : `<span class=\"project-button secondary\" aria-disabled=\"true\"><i class=\"fas fa-hourglass-half\" aria-hidden=\"true\"></i><span>Link coming soon</span></span>`;
+
+            return `
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="${delay}">
+                    <h3 class="project-title">${p.title}</h3>
+                    <p class="project-desc">${p.description}</p>
+                    <div class="project-tags">${(p.tags || []).map(makeTag).join('')}</div>
+                    ${p.details && p.details.length ? `<ul class="project-details">${p.details.map(d => `<li>${d}</li>`).join('')}</ul>` : ''}
+                    <div class="project-actions">${action}</div>
+                </div>
+            `;
+        }).join('');
+
+        grid.innerHTML = cards;
     }
 }
 
@@ -378,7 +453,7 @@ class EasterEggs {
         message.style.fontFamily = 'var(--font-primary)';
         message.style.fontSize = '1.2rem';
         message.style.textAlign = 'center';
-        message.innerHTML = '🎮 KONAMI CODE ACTIVATED! 🎮<br><small>WarninG approves!</small>';
+        message.innerHTML = '🎮 KONAMI CODE ACTIVATED! 🎮<br><small>Tushar Kajania approves!</small>';
         
         document.body.appendChild(message);
         
