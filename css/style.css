@@ -1140,10 +1140,20 @@ section {
     .project-actions {
         flex-direction: column;
     }
+}
 
+@media (max-width: 640px) {
     .skills-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    .skill-card {
+        flex: 1 1 100%;
+        max-width: none;
+        min-width: auto;
+        padding: 25px;
     }
 }
 
@@ -1184,17 +1194,27 @@ section {
     .contact-intro {
         margin-bottom: 20px;
     }
+
+    .section-header {
+        margin-bottom: 40px;
+    }
+
+    .skill-card {
+        padding: 20px;
+    }
 }
 
 /* Skills Section */
 .skills-section {
     background: var(--bg-secondary);
+    padding: 80px 0;
 }
 
 .skills-content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 30px;
+    justify-content: center;
 }
 
 .skill-card {
@@ -1202,6 +1222,9 @@ section {
     padding: 30px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    flex: 1 1 300px;
+    max-width: 350px;
+    min-width: 250px;
 }
 
 .skill-card h3 {
