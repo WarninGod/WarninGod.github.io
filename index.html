@@ -18,6 +18,9 @@
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Spline 3D Viewer -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.28/build/spline-viewer.js"></script>
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css?v=20251227-3">
     
@@ -25,6 +28,9 @@
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <!-- Spline 3D Background -->
+    <spline-viewer url="https://prod.spline.design/sDlGmCG7iCh35Up8/scene.splinecode" class="page-spline-background"></spline-viewer>
+    
     <!-- Loading Screen -->
     <div id="loading-screen">
             <div class="loading-content">
@@ -67,10 +73,8 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Parallax -->
+    <!-- Hero Section with Spline 3D Background -->
     <section id="home" class="hero-section">
-        <div class="parallax-bg"></div>
-        <div class="hero-particles" id="particles"></div>
         <div class="hero-content">
             <div class="hero-text" data-aos="fade-up" data-aos-delay="300">
                 <h1 class="hero-title">
@@ -171,39 +175,7 @@
         </div>
     </section>
 
-    <!-- Work Philosophy -->
-    <section id="philosophy" class="philosophy-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">How I Work</h2>
-                <p class="section-subtitle">Principles that guide my builds</p>
-            </div>
-            <div class="about-card" data-aos="fade-up">
-                <ul class="philosophy-list">
-                    <li>Understand the problem before writing code</li>
-                    <li>Build usable first, optimize later</li>
-                    <li>Keep UI simple and intuitive</li>
-                    <li>Write clean, readable code</li>
-                    <li>Focus on real business value</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Availability -->
-    <section id="availability" class="availability-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Availability</h2>
-                <p class="section-subtitle">Open to meaningful collaborations</p>
-            </div>
-            <div class="about-card" data-aos="fade-up">
-                <p>
-                    Currently open to freelance work, contract roles, and early-stage startup collaborations. Especially interested in projects involving dashboards, admin systems, and small business tools.
-                </p>
-            </div>
-        </div>
-    </section>
+    
 
     
 
@@ -274,6 +246,34 @@
         </div>
     </section>
 
+    <!-- Floating Contact Widget -->
+    <div class="floating-contact-widget" id="floating-contact-widget">
+        <button class="contact-widget-toggle" id="contact-widget-toggle">
+            <i class="fas fa-envelope"></i>
+            <span class="close-icon" style="display: none;">✕</span>
+        </button>
+        <div class="contact-widget-popup" id="contact-widget-popup">
+            <div class="popup-header">
+                <h3>Get in Touch</h3>
+                <p>I'm available for freelance work</p>
+            </div>
+            <div class="popup-content">
+                <div class="contact-method">
+                    <a href="mailto:tushar@warningod.me" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Me</span>
+                    </a>
+                </div>
+                <div class="contact-method">
+                    <a href="#contact" class="contact-link" onclick="closeContactWidget()">
+                        <i class="fas fa-comments"></i>
+                        <span>Contact Form</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -291,7 +291,7 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="js/particles.js" defer></script>
+    <!-- <script src="js/particles.js" defer></script> -->
     <script src="js/script.js" defer></script>
 </body>
 </html>
