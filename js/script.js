@@ -11,7 +11,7 @@ const PROJECTS = [
         title: 'Inventory Admin Panel',
         description: 'An internal admin dashboard to manage products, categories, and stock levels. Built with a focus on clarity, speed, and ease of use for non-technical users.',
         tags: ['Dashboard', 'Forms'],
-        url: 'https://warningod.me/Delhi47Traders/',
+        url: 'https://warningod.me/Hardware-Shop-Management-System/',
         details: ['Category management', 'Stock tracking concept', 'Scalable layout for future features']
     },
     {
