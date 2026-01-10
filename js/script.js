@@ -4,14 +4,14 @@ const PROJECTS = [
         title: 'Delhi47 Hardware Store',
         description: 'A real-world storefront website built for a local hardware business. Designed to showcase product categories clearly and help customers understand offerings without confusion.',
         tags: ['HTML', 'CSS'],
-        url: 'https://warningod.me/Delhi47/',
+        url: 'https://warningod.me/Delhi47-Website/',
         details: ['Focus on usability', 'Mobile-friendly layout', 'Business-oriented design']
     },
     {
         title: 'Inventory Admin Panel',
         description: 'An internal admin dashboard to manage products, categories, and stock levels. Built with a focus on clarity, speed, and ease of use for non-technical users.',
         tags: ['Dashboard', 'Forms'],
-        url: 'https://warningod.me/Delhi47Traders/',
+        url: 'https://warningod.me/Hardware-Shop-Management-System/',
         details: ['Category management', 'Stock tracking concept', 'Scalable layout for future features']
     },
     {
@@ -488,3 +488,44 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Floating Contact Widget Toggle
+function initContactWidget() {
+    const toggleBtn = document.getElementById('contact-widget-toggle');
+    const popup = document.getElementById('contact-widget-popup');
+    const closeIcon = toggleBtn.querySelector('.close-icon');
+    const envelopeIcon = toggleBtn.querySelector('i');
+
+    toggleBtn.addEventListener('click', () => {
+        popup.classList.toggle('active');
+        closeIcon.style.display = popup.classList.contains('active') ? 'block' : 'none';
+        envelopeIcon.style.display = popup.classList.contains('active') ? 'none' : 'block';
+    });
+
+    // Close popup when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.floating-contact-widget')) {
+            popup.classList.remove('active');
+            closeIcon.style.display = 'none';
+            envelopeIcon.style.display = 'block';
+        }
+    });
+}
+
+function closeContactWidget() {
+    const popup = document.getElementById('contact-widget-popup');
+    const toggleBtn = document.getElementById('contact-widget-toggle');
+    const closeIcon = toggleBtn.querySelector('.close-icon');
+    const envelopeIcon = toggleBtn.querySelector('i');
+    
+    popup.classList.remove('active');
+    closeIcon.style.display = 'none';
+    envelopeIcon.style.display = 'block';
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContactWidget);
+} else {
+    initContactWidget();
+}
