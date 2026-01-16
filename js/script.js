@@ -208,8 +208,12 @@ class EsportsPortfolio {
         submitBtn.disabled = true;
         
         try {
+            // Get Formspree endpoint from config or environment
+            const formspreeId = window.CONFIG?.FORMSPREE_ID || 'xreggnre';
+            const formspreeUrl = `https://formspree.io/f/${formspreeId}`;
+            
             // Submit to Formspree
-            const response = await fetch('https://formspree.io/f/xreggnre', {
+            const response = await fetch(formspreeUrl, {
                 method: 'POST',
                 body: formData,
                 headers: {
