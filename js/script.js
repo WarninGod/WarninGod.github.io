@@ -20,6 +20,27 @@ const PROJECTS = [
         tags: ['UI', 'JS', 'DB'],
         url: 'https://warningod.me/FitTrack/',
         details: ['Workout logging', 'Basic database integration', 'Responsive, mobile-friendly UI']
+    },
+    {
+        title: 'Nirvana Interiors',
+        description: 'A modern web application showcasing high-end interior design services with dark luxury aesthetic. Features portfolio showcase, consultation booking system, and AI-powered form handling.',
+        tags: ['React', 'TypeScript', 'Tailwind'],
+        url: 'https://nirvanainteriors.studio/',
+        details: ['React 19 with TypeScript', 'Framer Motion animations', 'Integrated booking system', 'SEO optimized']
+    },
+    {
+        title: 'CentraCare - Childcare Management',
+        description: 'A professional SaaS landing page for multi-location childcare management. Centralizes compliance, operations, and reporting across all daycare locations with multi-language support.',
+        tags: ['React', 'TypeScript', 'Vite'],
+        url: 'https://github.com/WarninGod/CentraCare---Multi-Site-Childcare-Management',
+        details: ['Multi-language support (EN/NL/FR)', 'GDPR compliant', 'Component-based architecture', 'Responsive design']
+    },
+    {
+        title: 'Little Sprout Academy',
+        description: 'A modern childcare management website with parent portal, admin dashboard, and AI-powered parenting assistant. Features daily activity logs, real-time updates, and staff management.',
+        tags: ['React', 'TypeScript', 'Gemini AI'],
+        url: 'https://warningod.me/Little-Sprout-Academy/',
+        details: ['Parent & Admin dashboards', 'AI parenting tips integration', 'Program management', 'Mobile-first design']
     }
 ];
 
